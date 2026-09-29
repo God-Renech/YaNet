@@ -52,12 +52,23 @@ function reclassifyTaiwanNodes(config) {
     groups.push(taiwanGroup)
   }
 
+  const mainlandIsEmpty = mainlandGroup.proxies.length === 0
   for (const group of groups) {
     if (group === taiwanGroup || !Array.isArray(group?.proxies)) continue
     const mainlandIndex = group.proxies.indexOf('CN中国大陆')
-    if (mainlandIndex !== -1 && !group.proxies.includes('TW台湾省')) {
-      group.proxies.splice(mainlandIndex + 1, 0, 'TW台湾省')
+    if (mainlandIndex !== -1) {
+      if (!group.proxies.includes('TW台湾省')) {
+        group.proxies.splice(mainlandIndex + 1, 0, 'TW台湾省')
+      }
+      if (mainlandIsEmpty) {
+        group.proxies = group.proxies.filter((name) => name !== 'CN中国大陆')
+      }
     }
+  }
+
+  if (mainlandIsEmpty) {
+    const mainlandIndex = groups.indexOf(mainlandGroup)
+    if (mainlandIndex !== -1) groups.splice(mainlandIndex, 1)
   }
 }
 
