@@ -37,7 +37,7 @@ function main(config) {
     `GEOSITE,geolocation-cn,${domesticPolicy}`,
     `DOMAIN-SUFFIX,cn,${domesticPolicy}`,
     `GEOSITE,cn,${domesticPolicy}`,
-    `GEOIP,cn,${domesticPolicy},no-resolve`,
+    `GEOIP,cn,${domesticPolicy}`,
   ]
   const existingRules = Array.isArray(config?.rules) ? config.rules : []
   const existingSet = new Set(existingRules)
