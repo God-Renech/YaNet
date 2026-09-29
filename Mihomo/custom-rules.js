@@ -26,13 +26,14 @@ function main(config) {
   const groups = Array.isArray(config?.['proxy-groups']) ? config['proxy-groups'] : []
   const hasDefaultNode = groups.some((group) => group?.name === '默认节点')
   const bilibiliPolicy = hasDefaultNode ? '默认节点' : 'DIRECT'
+  const domesticPolicy = hasDefaultNode ? '默认节点' : 'DIRECT'
   const bilibiliRule = `GEOSITE,bilibili,${bilibiliPolicy}`
   const customRules = [
     ...adobeBlockRules,
     bilibiliRule,
     ...directRules,
-    'GEOSITE,cn,DIRECT',
-    'GEOIP,cn,DIRECT,no-resolve',
+    `GEOSITE,cn,${domesticPolicy}`,
+    `GEOIP,cn,${domesticPolicy},no-resolve`,
   ]
   const existingRules = Array.isArray(config?.rules) ? config.rules : []
   const existingSet = new Set(existingRules)
