@@ -179,33 +179,8 @@ if (ruleSet === 'all') {
   })
 }
 
-// Personal rules. Keep specific rules before the broad China rules.
-const customRules = [
-  'DOMAIN-SUFFIX,ic.adobe.io,REJECT-DROP',
-  'DOMAIN-REGEX,\\w{10}\\.adobe\\.io,REJECT-DROP',
-  'DOMAIN-REGEX,\\w{10}\\.adobestats\\.io,REJECT-DROP',
-  'GEOSITE,bilibili,默认节点',
-  'DOMAIN-SUFFIX,siliconflow.cn,直连',
-  'DOMAIN-SUFFIX,siliconflow.com,直连',
-  'DOMAIN,kivo.wiki,直连',
-  'DOMAIN-SUFFIX,kivo.wiki,直连',
-  'DOMAIN-SUFFIX,tokenrhythm,直连',
-  'DOMAIN,tokenrhythm,直连',
-  'DOMAIN,steampy.com,直连',
-  'DOMAIN-SUFFIX,steampy.com,直连',
-  'DOMAIN,media.st.dl.eccdnx.com,直连',
-  'DOMAIN-SUFFIX,st.dl.eccdnx.com,直连',
-  'DOMAIN-SUFFIX,ip138.com,默认节点',
-  'DOMAIN-SUFFIX,ip.cn,默认节点',
-  'GEOSITE,geolocation-cn,默认节点',
-  'DOMAIN-SUFFIX,cn,默认节点',
-  'GEOSITE,cn,默认节点',
-  'GEOIP,cn,默认节点,no-resolve',
-]
-
 // 初始规则
 const rules = [
-  ...customRules,
   'DST-PORT,22,直连', // Git SSH（必须放首位，防止密钥协商失败）
   'DST-PORT,3389,直连', // Windows远程连接
   'DST-PORT,5938,直连', // TeamViewer（核心端口，含TCP/UDP）
