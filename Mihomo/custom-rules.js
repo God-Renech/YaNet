@@ -66,17 +66,17 @@ function main(config) {
   const hasDefaultNode = groups.some((group) => group?.name === '默认节点')
   const bilibiliPolicy = hasDefaultNode ? '默认节点' : 'DIRECT'
   const domesticPolicy = hasDefaultNode ? '默认节点' : 'DIRECT'
-  const bilibiliRule = \`GEOSITE,bilibili,\${bilibiliPolicy}\`
+  const bilibiliRule = `GEOSITE,bilibili,${bilibiliPolicy}`
   const customRules = [
     ...adobeBlockRules,
     bilibiliRule,
     ...directRules,
-    \`DOMAIN-SUFFIX,ip138.com,\${domesticPolicy}\`,
-    \`DOMAIN-SUFFIX,ip.cn,\${domesticPolicy}\`,
-    \`GEOSITE,geolocation-cn,\${domesticPolicy}\`,
-    \`DOMAIN-SUFFIX,cn,\${domesticPolicy}\`,
-    \`GEOSITE,cn,\${domesticPolicy}\`,
-    \`GEOIP,cn,\${domesticPolicy}\`,
+    `DOMAIN-SUFFIX,ip138.com,${domesticPolicy}`,
+    `DOMAIN-SUFFIX,ip.cn,${domesticPolicy}`,
+    `GEOSITE,geolocation-cn,${domesticPolicy}`,
+    `DOMAIN-SUFFIX,cn,${domesticPolicy}`,
+    `GEOSITE,cn,${domesticPolicy}`,
+    `GEOIP,cn,${domesticPolicy}`,
   ]
   const existingRules = Array.isArray(config?.rules) ? config.rules : []
   const existingSet = new Set(existingRules)
