@@ -32,6 +32,10 @@ function main(config) {
     ...adobeBlockRules,
     bilibiliRule,
     ...directRules,
+    `DOMAIN-SUFFIX,ip138.com,${domesticPolicy}`,
+    `DOMAIN-SUFFIX,ip.cn,${domesticPolicy}`,
+    `GEOSITE,geolocation-cn,${domesticPolicy}`,
+    `DOMAIN-SUFFIX,cn,${domesticPolicy}`,
     `GEOSITE,cn,${domesticPolicy}`,
     `GEOIP,cn,${domesticPolicy},no-resolve`,
   ]

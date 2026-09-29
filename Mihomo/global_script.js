@@ -195,6 +195,10 @@ const customRules = [
   'DOMAIN-SUFFIX,steampy.com,直连',
   'DOMAIN,media.st.dl.eccdnx.com,直连',
   'DOMAIN-SUFFIX,st.dl.eccdnx.com,直连',
+  'DOMAIN-SUFFIX,ip138.com,默认节点',
+  'DOMAIN-SUFFIX,ip.cn,默认节点',
+  'GEOSITE,geolocation-cn,默认节点',
+  'DOMAIN-SUFFIX,cn,默认节点',
   'GEOSITE,cn,默认节点',
   'GEOIP,cn,默认节点,no-resolve',
 ]
