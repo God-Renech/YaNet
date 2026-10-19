@@ -25,6 +25,11 @@ const adobeBlockRules = [
 const taiwanPattern = /台湾|台灣|🇹🇼|taiwan|tai wan/i
 const taiwanIcon = 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png'
 
+const cascadeurBlockRules = [
+  'PROCESS-NAME,cascadeur.exe,REJECT-DROP',
+  'PROCESS-NAME,cascadeur_auth.exe,REJECT-DROP',
+]
+
 function reclassifyTaiwanNodes(config) {
   const groups = Array.isArray(config?.['proxy-groups']) ? config['proxy-groups'] : []
   const mainlandGroup = groups.find((group) => group?.name === 'CN中国大陆')
@@ -79,6 +84,7 @@ function main(config) {
   const domesticPolicy = hasDefaultNode ? '默认节点' : 'DIRECT'
   const bilibiliRule = `GEOSITE,bilibili,${bilibiliPolicy}`
   const customRules = [
+    ...cascadeurBlockRules,
     ...adobeBlockRules,
     bilibiliRule,
     ...directRules,
